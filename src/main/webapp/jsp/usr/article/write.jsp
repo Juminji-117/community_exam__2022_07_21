@@ -22,7 +22,7 @@ function ArticleSave__submitForm(form) {
 </script>
 
 <%--ArticleSave__submitForm() 함수가 먼저 실행되도록(폼체크 미통과 -> alert, 통과->form.submit();) return false 처리--%>
-<form onsubmit="ArticleSave__submitForm(this); return false;">
+<form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
     <div>
         <span>제목</span>
         <div>
