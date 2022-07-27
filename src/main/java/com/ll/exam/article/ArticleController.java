@@ -3,7 +3,6 @@ package com.ll.exam.article;
 import com.ll.exam.Rq;
 import com.ll.exam.article.dto.ArticleDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleController {
@@ -34,10 +33,20 @@ public class ArticleController {
     }
 
     public void showDetail(Rq rq) {
-        long id = 0;
-        // 게시물 생성이 안됐거나 파라미터가 주어지지 않았을 때 보여줄 http://localhost:8081/usr/article/detail 화면
+        long id = rq.getLongPathValueByIndex(1, 0);
+
+        if (id == 0) {
+            rq.appendBody("번호를 입력해주세요.");
+            return;
+        }
 
         ArticleDto articleDto = articleService.findById(id);
+
+        if (articleDto == null) {
+            rq.appendBody("해당 글이 존재하지 않습니다.");
+            return;
+        }
+
 
         rq.setAttr("article", articleDto);
         rq.view("usr/article/detail");
