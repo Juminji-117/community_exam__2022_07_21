@@ -32,4 +32,14 @@ public class ArticleController {
 
         rq.appendBody("%d번 게시물이 생성 되었습니다.".formatted(id));
     }
+
+    public void showDetail(Rq rq) {
+        long id = 0;
+        // 게시물 생성이 안됐거나 파라미터가 주어지지 않았을 때 보여줄 http://localhost:8081/usr/article/detail 화면
+
+        ArticleDto articleDto = articleService.findById(id);
+
+        rq.setAttr("article", articleDto);
+        rq.view("usr/article/detail");
+    }
 }
