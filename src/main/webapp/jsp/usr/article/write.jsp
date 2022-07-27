@@ -3,6 +3,7 @@
 <h1>게시물 작성</h1>
 
 <script>
+<%-- 폼체크 함수 --%>
 function ArticleSave__submitForm(form) {
     form.title.value = form.title.value.trim();
     if ( form.title.value.length == 0 ) {
@@ -20,6 +21,7 @@ function ArticleSave__submitForm(form) {
 }
 </script>
 
+<%--ArticleSave__submitForm() 함수가 먼저 실행되도록(폼체크 미통과 -> alert, 통과->form.submit();) return false 처리--%>
 <form onsubmit="ArticleSave__submitForm(this); return false;">
     <div>
         <span>제목</span>
